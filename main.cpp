@@ -1,9 +1,11 @@
 #include "rbtree.h"
 
 int main() {
+
 	RedBlackTree<double> mytree;
 	std::cout << "RED-BLACK TREE IMPLEMENTATION\n";
 	std::cout << "\n\nTREE AFTER INSERTION THE ELEMENTS:\n\n";
+	
 	mytree.insert(10);
 	mytree.insert(18);
 	mytree.insert(7);

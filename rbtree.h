@@ -15,8 +15,8 @@ struct RBNode {
 	RBNode* left; 
 	RBNode* right; 
 	Color color; 
-	RBNode() : value(T()), left(nullptr), right(nullptr), color(BLACK), parent(parent) {}
-    RBNode(const T& item) : value(item), left(nullptr), right(nullptr), color(RED), parent(parent) {}
+	RBNode() : value(T()), left(nullptr), right(nullptr), color(BLACK), parent(nullptr) {}
+    RBNode(const T& item) : value(item), left(nullptr), right(nullptr), color(RED), parent(nullptr) {}
     ~RBNode() {}
 };
 
@@ -71,11 +71,7 @@ public:
 
 	RBNode<T>* search(T item) {return search_help(root, item);}
 
-
-
-
 	void insert(T item);
-
 
 	void delete_node(T value) {delete_node_help(root, value);}
 
