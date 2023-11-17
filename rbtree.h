@@ -44,7 +44,7 @@ private:
 	RBNode<T>* find_predecessor(RBNode<T>* node);
 	void rotate_left(RBNode<T>* node_to_rotate);
 	void rotate_right(RBNode<T>* node_to_rotate);
-	void transplant(RBNode<T>* node1, RBNode<T>* node2);
+	void transplant(RBNode<T>* node1, RBNode<T>* node2); // helps move subtrees within the rb tree
 	RBNode<T>* find_min(RBNode<T>* node);
 	RBNode<T>* find_max(RBNode<T>* node);
 	RBNode<T>* get_root(){return root;}
@@ -262,11 +262,11 @@ void RedBlackTree<T>::rotate_right(RBNode<T>* node_to_rotate) {
 
 template <typename T>
 void RedBlackTree<T>::transplant(RBNode<T>* node1, RBNode<T>* node2){
-	if (node1->parent == nullptr) {
+	if (node1->parent == nullptr) { // node1 is root
 		root = node2;
-	} else if (node1 == node1->parent->left){
+	} else if (node1 == node1->parent->left){// node1 is a left child
 		node1->parent->left = node2;
-	} else {
+	} else {//node1 is a right child
 		node1->parent->right = node2;
 	}
 	node2->parent = node1->parent;
@@ -311,6 +311,7 @@ RBNode<T>* RedBlackTree<T>::find_max(RBNode<T>* node) {
 template <typename T>
 void RedBlackTree<T>::insertion_fix(RBNode<T>* node){
 	RBNode<T>* uncle;
+
 	while (node->parent->color == RED) {
 		if (node->parent == node->parent->parent->right) {
 			//uncle is left child of grandparent
